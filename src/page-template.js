@@ -44,7 +44,8 @@
       </section>
     `;
   };
-const genIntern = BuilditArry =>{
+const genIntern = employeeArry =>{
+    
   return`
   <div class="card" style="width: 18rem;">
             <div class="card-header">
@@ -64,7 +65,7 @@ const genIntern = BuilditArry =>{
   // export function to generate entire page
   module.exports = templateData => {
     // destructure page data by section
-    const {projects} = templateData;
+    const {BuilditArry} = templateData;
   
     return `
     <!DOCTYPE html>
