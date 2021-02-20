@@ -10,8 +10,8 @@ const promptUser = () => {
       {
         type: 'input',
         name: 'start',
-        message: 'This prompt will ask you questions to help gather your team info, Hit Enter to Continue.',
-        default: true 
+        message: 'This prompt will ask you questions to help gather your team info, Hit Enter to Continue.'
+        
         
       }
     ])}
@@ -123,10 +123,10 @@ const promptEmployee = () => {
         } else if (teamData.role == "Manager") {
           newClass = new Manager(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
         }else if (teamData.role == "Engineer"){
-          newClass = new Engineer(team.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
+          newClass = new Engineer(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
         }
         employeeArr.push(newClass)
-        // employeeData.arry.push(teamData);
+  
         if (teamData.addAnother) {
           return promptEmployee();
         } else {

@@ -153,9 +153,11 @@
     padding: 2.5%;
   }
   .card-text{
-      font-size: 1.9rem;
+      font-size: 1.7rem;
   }
- 
+ i {
+   margin-right: 10px;
+ }
   
   /* LAYOUT */
   .container {

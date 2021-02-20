@@ -13,11 +13,21 @@ const genEmployee = employeeArry => {
           } else if(github) {
             variable = `<li class='list-group-item border'>Github: <a href="http://www.github.com/${github}">${github}</a></li>`
           }
+          let roleVar=""
+          if (role === "Engineer"){
+            roleVar = `<span class="card-text"><i class="fas fa-glasses"></i>${role}</span>`
+          }else if (role === "Intern"){
+            roleVar = `<span class="card-text"><i class="fas fa-user-graduate"></i>${role}</span>`
+          }else if (role === "Manager"){
+            roleVar = `<span class="card-text"><i class="fas fa-user-tie"></i>${role}</span>`
+          }
+
+
       return `
           <div class="card" style="width: 18rem;">
             <div class="card-header">
               <h5 class="card-title">${name}</h5>
-              <p class="card-text"><i class="fas fa-glasses"></i>${role}</p>
+              ${roleVar}
             </div>
             <ul class="flex-column list-group list-unstyled">
               <li class="list-group-item border">Id: ${id}</li>
@@ -45,7 +55,7 @@ const genEmployee = employeeArry => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>My Team</title>
-     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
       <link rel="stylesheet" href="style.css">
     </head>
     
