@@ -1,5 +1,4 @@
 
-  // create the projects section
   const generateProjects = projectsArr => {
     return `
       <section class="my-3" id="portfolio">
@@ -45,7 +44,7 @@
     `;
   };
 const genIntern = employeeArry =>{
-    
+
   return`
   <div class="card" style="width: 18rem;">
             <div class="card-header">

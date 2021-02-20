@@ -1,19 +1,37 @@
-const BuildIt = require('./lib/BuildIt');
 const inquirer = require('inquirer');
+const Employee = require('./lib/Employee');
+
 const generatePage = require('./src/page-template');
-const { writeFile, copyFile } = require('./utils/generate-site');
+const { writeFile, copyFile } = require('./src/page-template');
 
+const promptUser = () => {
+    return inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'start',
+        message: 'This prompt will ask you questions to help gather your team info, Continue?',
+        default: false ,
+        validate: startInput=>{
+            if (startInput){
+                return true;
+            }else{
+                console.log('Goodbye then!')
+                return;
+            }
+        }
+      }
+    ])}
 
-const promptUser = employeeData => {
+const promptEmployee = (employeeData) => {
     console.log(`
-  =================
-  Add a New Project
-  =================
-  `);
+    ==================
+    Add a New Employee
+    ==================
+    `);
   
-    // If there's no 'projects' array property, create one
-    if (!employeeData.array) {
-        employeeData.array = [];
+    //If there's no 'projects' array property, create one
+    if (!employeeData.arry) {
+        employeeData.arry = [];
     }
     return inquirer
       .prompt([
@@ -36,14 +54,29 @@ const promptUser = employeeData => {
             choices:['Intern','Engineer','Manager']
         },
         {
-          type: 'input',
-          name: 'id',
-          message: 'What is this teammates id?',
+            type: 'input',
+            name: 'school',
+            message: 'Enter the interns school name.',
+            validate: phoneInput => {
+              if (phoneInput) {
+                return true;
+              } else {
+                console.log('enter a school!');
+                return false;
+              }
+            },
+            when: (answers)=> answers.role === "Intern"   //????????????????????????
+                
         },
         {
           type: 'input',
-          name: 'link',
-          message: 'Enter the employee GitHub name. (Required)',
+          name: 'id',
+          message: 'Enter this teammates id:'
+        },
+        {
+          type: 'input',
+          name: 'github',
+          message: 'Enter the employee GitHub name:',
           validate: linkInput => {
             if (linkInput) {
               return true;
@@ -51,12 +84,13 @@ const promptUser = employeeData => {
               console.log('You need to enter a GitHub name!');
               return false;
             }
-          }
+          },
+          when: (answers)=> (answers.role == "Engineer" || answers.role == "Manager" )
         },
         {
           type: 'input',
           name: 'email',
-          message: 'Enter the employee Email.',
+          message: 'Enter the employee Email:',
           validate: emailInput => {
             if (emailInput) {
               return true;
@@ -69,7 +103,7 @@ const promptUser = employeeData => {
         {
             type: 'input',
           name: 'phone',
-          message: 'Enter the employee phone number.',
+          message: 'Enter the employee phone number:',
           validate: phoneInput => {
             if (phoneInput) {
               return true;
@@ -77,22 +111,9 @@ const promptUser = employeeData => {
               console.log('You need a number to call them!');
               return false;
             }
-          }
-        },
-        {
-            type: 'input',
-            name: 'school',
-            message: 'Enter the interns school name.',
-            validate: phoneInput => {
-              if (phoneInput) {
-                return true;
-              } else {
-                console.log('enter a school!');
-                return false;
-              }
-            },
-            when: ({role})=> role(Intern)   //????????????????????????
-                
+          },
+          when: (answers)=> (answers.role == "Engineer" || answers.role == "Manager" )
+
         },
         {
           type: 'confirm',
@@ -102,22 +123,27 @@ const promptUser = employeeData => {
         }
       ])
       .then(teamData => {
-        employeeData.array.push(teamData);
+        employeeData.arry.push(teamData);
         if (teamData.addAnother) {
-          return promptUser(employeeData);
+          return promptEmployee(employeeData);
         } else {
           return employeeData;
         }
       });
+    
   };
 
 
 
 
 
-
+// promptProject()
 
 promptUser()
+.then(promptEmployee)
+// .then(employeeData => {
+//     return console.log(employeeData);
+// })
   
   .then(employeeData => {
     return generatePage(employeeData);
