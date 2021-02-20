@@ -1,17 +1,19 @@
 
 const genEmployee = employeeArry => {
     if(!employeeArry){
-        return console.log('WTH');
+        return console.log('Error no data');
     }
    
     return `
       ${employeeArry
-        .map(({ name, role, id, email, github, school}) => {
+        .map(({ name, role, id, email, github, school, office}) => {
           let variable=""
           if(school) {
             variable = `<li class='list-group-item border'>School: ${school}</li>`
           } else if(github) {
             variable = `<li class='list-group-item border'>Github: <a href="http://www.github.com/${github}">${github}</a></li>`
+          }else if(office){
+            variable = `<li class ='listgroup-item border'>Office: ${office}</li>`
           }
           let roleVar=""
           if (role === "Engineer"){

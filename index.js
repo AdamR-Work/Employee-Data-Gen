@@ -79,7 +79,7 @@ const promptEmployee = () => {
               return false;
             }
           },
-          when: (answers)=> (answers.role == "Engineer" || answers.role == "Manager" )
+          when: (answers)=> answers.role == "Engineer"
         },
         {
           type: 'input',
@@ -96,8 +96,8 @@ const promptEmployee = () => {
         },
         {
             type: 'input',
-          name: 'phone',
-          message: 'Enter the employee phone number:',
+          name: 'office',
+          message: 'Enter the Managers Office number:',
           validate: phoneInput => {
             if (phoneInput) {
               return true;
@@ -106,7 +106,7 @@ const promptEmployee = () => {
               return false;
             }
           },
-          when: (answers)=> (answers.role == "Engineer" || answers.role == "Manager" )
+          when: (answers)=> answers.role == "Manager"
 
         },
         {
@@ -121,9 +121,9 @@ const promptEmployee = () => {
         if(teamData.role == "Intern") {
           newClass = new Intern(teamData.name, teamData.id, teamData.email, teamData.school, teamData.role)
         } else if (teamData.role == "Manager") {
-          newClass = new Manager(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
+          newClass = new Manager(teamData.name, teamData.id, teamData.email, teamData.role, teamData.office)
         }else if (teamData.role == "Engineer"){
-          newClass = new Engineer(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
+          newClass = new Engineer(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role)
         }
         employeeArr.push(newClass)
   
