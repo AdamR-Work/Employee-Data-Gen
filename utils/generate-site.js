@@ -1,9 +1,9 @@
 const fs = require('fs');
 
 // writing files
-const writeFile = pageHTML => {
+const writeFile = fileContent => {
   return new Promise((resolve, reject) => {
-    fs.writeFile('./dist/index.html', pageHTML, err => {
+    fs.writeFile('./dist/index.html', fileContent, err => {
       if (err) {
         reject(err);
         return;

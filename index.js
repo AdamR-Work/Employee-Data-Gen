@@ -2,14 +2,14 @@ const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 
 const generatePage = require('./src/page-template');
-const { writeFile, copyFile } = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generate-site');
 
 const promptUser = () => {
     return inquirer.prompt([
       {
         type: 'confirm',
         name: 'start',
-        message: 'This prompt will ask you questions to help gather your team info, Continue?',
+        message: 'This prompt will ask you questions to help gather your team info, Hit Enter to Continue.',
         default: false ,
         validate: startInput=>{
             if (startInput){
@@ -137,14 +137,9 @@ const promptEmployee = (employeeData) => {
 
 
 
-// promptProject()
 
 promptUser()
 .then(promptEmployee)
-// .then(employeeData => {
-//     return console.log(employeeData);
-// })
-  
   .then(employeeData => {
     return generatePage(employeeData);
   })
