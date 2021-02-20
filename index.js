@@ -1,28 +1,24 @@
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee');
-
+const Intern =  require("./lib/Intern");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer")
 const generatePage = require('./src/page-template');
 const { writeFile, copyFile } = require('./utils/generate-site');
 
 const promptUser = () => {
     return inquirer.prompt([
       {
-        type: 'confirm',
+        type: 'input',
         name: 'start',
         message: 'This prompt will ask you questions to help gather your team info, Hit Enter to Continue.',
-        default: false ,
-        validate: startInput=>{
-            if (startInput){
-                return true;
-            }else{
-                console.log('Goodbye then!')
-                return;
-            }
-        }
+        default: true 
+        
       }
     ])}
 
-const promptEmployee = (employeeData) => {
+const employeeArr = [];
+
+const promptEmployee = () => {
     console.log(`
     ==================
     Add a New Employee
@@ -30,9 +26,7 @@ const promptEmployee = (employeeData) => {
     `);
   
     //If there's no 'projects' array property, create one
-    if (!employeeData.arry) {
-        employeeData.arry = [];
-    }
+    
     return inquirer
       .prompt([
         {
@@ -65,7 +59,7 @@ const promptEmployee = (employeeData) => {
                 return false;
               }
             },
-            when: (answers)=> answers.role === "Intern"   //????????????????????????
+            when: (answers)=> answers.role === "Intern"   
                 
         },
         {
@@ -123,11 +117,20 @@ const promptEmployee = (employeeData) => {
         }
       ])
       .then(teamData => {
-        employeeData.arry.push(teamData);
+        let newClass;
+        if(teamData.role == "Intern") {
+          newClass = new Intern(teamData.name, teamData.id, teamData.email, teamData.school, teamData.role)
+        } else if (teamData.role == "Manager") {
+          newClass = new Manager(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
+        }else if (teamData.role == "Engineer"){
+          newClass = new Engineer(team.name, teamData.id, teamData.email, teamData.github, teamData.role, teamData.phone)
+        }
+        employeeArr.push(newClass)
+        // employeeData.arry.push(teamData);
         if (teamData.addAnother) {
-          return promptEmployee(employeeData);
+          return promptEmployee();
         } else {
-          return employeeData;
+          return employeeArr;
         }
       });
     
