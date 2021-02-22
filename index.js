@@ -121,7 +121,7 @@ const promptEmployee = () => {
         if(teamData.role == "Intern") {
           newClass = new Intern(teamData.name, teamData.id, teamData.email, teamData.school, teamData.role)
         } else if (teamData.role == "Manager") {
-          newClass = new Manager(teamData.name, teamData.id, teamData.email, teamData.role, teamData.office)
+          newClass = new Manager(teamData.name, teamData.id, teamData.email,teamData.office, teamData.role )
         }else if (teamData.role == "Engineer"){
           newClass = new Engineer(teamData.name, teamData.id, teamData.email, teamData.github, teamData.role)
         }

@@ -155,7 +155,9 @@
   .card-text{
       font-size: 1.7rem;
   }
- 
+ i {
+   margin-right: 10px;
+ }
   
   /* LAYOUT */
   .container {
@@ -180,9 +182,7 @@
     justify-content: space-between;
     padding:15px;
 }
-i{
-  margin-right: 10px;
-}
+
 .border{
     border: 1px solid grey;
     padding: 10px 5px;
