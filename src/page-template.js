@@ -33,7 +33,7 @@ const genEmployee = employeeArry => {
             </div>
             <ul class="flex-column list-group list-unstyled">
               <li class="list-group-item border">Id: ${id}</li>
-              <li class="list-group-item border">Email:<a href="#" class="card-link">${email}</a></li>
+              <li class="list-group-item border">Email:<a href="mailto: ${email}" class="card-link">${email}</a></li>
               ${variable}
   
             </ul>
