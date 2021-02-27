@@ -1,4 +1,4 @@
-# Team-Profile-Generator
+# Employee-Data-Gen
 
 ## License
 
@@ -13,9 +13,11 @@ No License Provided
  
 ## Description
 
-It generates a employee team html based off the users input with inquirer. Click on the first image for a video on the program in action.
-[![Team Generator in Action](demo.jpg)](https://drive.google.com/file/d/1r_4kH1WgR6-ZpsLTjq56HjpkbYrJEUPa/view "Team Generator")
+[Click this Link to see the App in use!!!](https://drive.google.com/file/d/111VBxNKlCYwVzq_fn2fx7NhFD9cl63GX/view "Employee-Data-Gen")
 
+It generates a employee team html based off the users input with inquirer. Click on the first image for a video on the program in action.
+
+<img src="demo.jpg">
 
 <img src="demo2.jpg">
 
