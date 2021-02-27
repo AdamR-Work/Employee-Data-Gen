@@ -45,7 +45,7 @@ aramosatwork@hotmail.com
 
 ### Github
 
-https://github.com/AdamR-Work/Team-Profile-Generator
+https://github.com/AdamR-Work/Employee-Data-Gen
 
 
 ## Contributing
