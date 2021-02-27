@@ -15,7 +15,7 @@ No License Provided
 
 [Click this Link to see the App in use!!!](https://drive.google.com/file/d/111VBxNKlCYwVzq_fn2fx7NhFD9cl63GX/view "Employee-Data-Gen")
 
-It generates a employee team html based off the users input with inquirer. Click on the first image for a video on the program in action.
+It generates a employee team html based off the users input with inquirer.
 
 <img src="demo.jpg">
 
